@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Appointments</h2>
 
-  <div *ngIf="isClient">
+  <div *ngIf="isPatient">
     <h3>Available Service Providers</h3>
     <div *ngFor="let provider of providers">
       <h4>{{ provider.name }}</h4>
@@ -15,11 +15,11 @@
     </div>
   </div>
 
-  <div *ngIf="!isClient">
+  <div *ngIf="!isPatient">
     <h3>Your Appointments</h3>
     <ul>
       <li *ngFor="let appointment of appointments">
-        {{ appointment.clientName }} at {{ appointment.time }}
+        {{ appointment.patientName }} at {{ appointment.time }}
         <button
           class="btn btn-success"
           (click)="updateStatus(appointment.id, 'ACCEPTED')"

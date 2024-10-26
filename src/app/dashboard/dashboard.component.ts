@@ -7,7 +7,7 @@ import { AuthService } from "../auth.service";
   styleUrls: ["./dashboard.component.css"],
 })
 export class DashboardComponent implements OnInit {
-  isClient: boolean = false;
+  isPatient: boolean = false;
   isProvider: boolean = false;
 
   constructor(private authService: AuthService) {}
@@ -15,8 +15,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     // Assuming token has role information, you can decode it
     const userRole = localStorage.getItem("role");
-    this.isClient = userRole === "CLIENT";
-    this.isProvider = userRole === "SERVICE_PROVIDER";
+    this.isPatient = userRole === "PATIENT";
+    this.isProvider = userRole === "DOCTOR";
 
     console.log(userRole);
   }

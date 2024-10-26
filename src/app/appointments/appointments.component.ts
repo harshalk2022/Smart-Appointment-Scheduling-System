@@ -9,16 +9,16 @@ import { Component, OnInit } from "@angular/core";
 export class AppointmentsComponent implements OnInit {
   appointments: any[] = [];
   providers: any[] = []; // Declare providers property
-  isClient: boolean = false;
+  isPatient: boolean = false;
 
   constructor(private http: HttpClient) {}
 
   // ngOnInit() {
   //   const userRole = localStorage.getItem('role');
-  //   this.isClient = userRole === 'CLIENT';
+  //   this.isPatient = userRole === 'PATIENT';
 
-  //   if (this.isClient) {
-  //     this.http.get('http://localhost:8080/appointments/client/1').subscribe((data: any) => {
+  //   if (this.isPatient) {
+  //     this.http.get('http://localhost:8080/appointments/patient/1').subscribe((data: any) => {
   //       this.appointments = data;
   //     });
   //   } else {
@@ -29,9 +29,9 @@ export class AppointmentsComponent implements OnInit {
   // }
 
   // bookAppointment(providerId: number, time: string) {
-  //   const clientId = 1; // Get from logged in user
+  //   const patientId = 1; // Get from logged in user
   //   this.http.post('http://localhost:8080/appointments/book', {
-  //     clientId,
+  //     patientId,
   //     providerId,
   //     time
   //   }).subscribe({
@@ -42,9 +42,9 @@ export class AppointmentsComponent implements OnInit {
 
   ngOnInit() {
     const userRole = localStorage.getItem("role");
-    this.isClient = userRole === "CLIENT";
+    this.isPatient = userRole === "PATIENT";
 
-    if (this.isClient) {
+    if (this.isPatient) {
       this.loadProviders();
     } else {
       this.loadAppointmentsForProvider();
@@ -69,10 +69,10 @@ export class AppointmentsComponent implements OnInit {
   }
 
   bookAppointment(providerId: number, time: string) {
-    const clientId = 1; // Replace with actual client ID logic
+    const patientId = 1; // Replace with actual patient ID logic
     this.http
       .post("http://localhost:8080/appointments/book", {
-        clientId,
+        patientId,
         providerId,
         time,
       })

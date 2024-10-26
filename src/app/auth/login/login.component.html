@@ -1,64 +1,6 @@
-<!-- <div class="container">
-
-  <h2>Login</h2>
-
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input id="email" class="form-control" formControlName="email" />
-    </div>
-
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input id="password" type="password" class="form-control" formControlName="password" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Login</button>
-
-  </form>
-
-</div> -->
-
-<!--<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input id="email" class="form-control" formControlName="email" />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input id="password" type="password" class="form-control" formControlName="password" />
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form> -->
-
-<!-- <div class="full-page-img">
-  <div class="container form-container">
-    <h2>Login</h2>
-    <hr>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          placeholder="Enter Your Email" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-          else.</small>
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password" required>
-      </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Remember me</label>
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Login</button>
-    </form>
-  </div>
-</div> -->
-
 <div class="full-page-img">
   <div class="container form-container">
+    <!-- Login Form -->
     <form
       [formGroup]="loginForm"
       (ngSubmit)="onSubmit()"
@@ -66,42 +8,86 @@
     >
       <h2 class="text-center">Login</h2>
       <hr />
+
+      <!-- Email Input -->
       <div class="form-group mb-3">
-        <label for="exampleInputEmail1">Email address</label>
+        <label for="email"
+          >Email address<small class="text-danger">*</small></label
+        >
         <input
           type="email"
           class="form-control"
-          id="exampleInputEmail1"
+          id="email"
           formControlName="email"
           aria-describedby="emailHelp"
           placeholder="Enter Your Email"
           required
         />
-        <small id="emailHelp" class="form-text text-muted"
-          >We'll never share your email with anyone else.</small
+        <small id="emailHelp" class="form-text text-muted">
+          We'll never share your email with anyone else.
+        </small>
+        <div
+          *ngIf="
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          "
+          class="text-danger"
         >
+          Email can't be empty.
+        </div>
       </div>
+
+      <!-- Password Input -->
       <div class="form-group mb-3">
-        <label for="exampleInputPassword1">Password</label>
+        <label for="password"
+          >Password<small class="text-danger">*</small></label
+        >
         <input
           type="password"
           class="form-control"
-          id="exampleInputPassword1"
+          id="password"
           formControlName="password"
           placeholder="Enter Password"
           required
         />
-      </div>
-      <div class="form-group form-check mb-3">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+          class="text-danger"
+        >
+          Password can't be empty.
+        </div>
       </div>
 
+      <!-- Remember Me Checkbox -->
+      <div class="form-group form-check mb-3">
+        <input type="checkbox" class="form-check-input" id="checkbox" />
+        <label class="form-check-label" for="checkbox">Remember me</label>
+      </div>
+
+      <!-- Warning Alert for Form Validation -->
+      <div
+        *ngIf="showWarning"
+        class="alert alert-warning alert-dismissible fade show"
+        role="alert"
+      >
+        <strong>Warning!</strong> {{ showWarning }}
+        <button
+          type="button"
+          class="btn-close"
+          (click)="showWarning = ''"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!-- Navigation Buttons -->
       <div class="d-flex justify-content-between mt-4">
         <button class="btn btn-secondary" routerLink="/">Back to Home</button>
         <button type="submit" class="btn btn-primary ms-2">Login</button>
       </div>
 
+      <!-- Register Link -->
       <div class="text-center mt-3">
         <p>Don't have an account? <a routerLink="/register">Sign Up</a></p>
       </div>

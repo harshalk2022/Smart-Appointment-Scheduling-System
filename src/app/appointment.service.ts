@@ -13,8 +13,8 @@ export class AppointmentService {
     return this.http.post(`${this.baseUrl}/appointments/book`, appointmentData);
   }
 
-  getClientAppointments(clientId: number) {
-    return this.http.get(`${this.baseUrl}/appointments/client/${clientId}`);
+  getPatientAppointments(patientId: number) {
+    return this.http.get(`${this.baseUrl}/appointments/patient/${patientId}`);
   }
 
   getProviderAppointments(providerId: number) {
