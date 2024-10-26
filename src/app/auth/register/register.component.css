@@ -1,5 +1,5 @@
 .full-page-img {
-  background-image: url('src/img/b3.jpg');
+  background-image: url("src/img/b3.jpg");
   /* Set the path to your image */
   background-size: cover;
   background-position: center;
@@ -39,4 +39,3 @@ a {
 a:hover {
   text-decoration: underline; /* Underline on hover */
 }
-

@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AvailabilityComponent } from './availability.component';
+import { AvailabilityComponent } from "./availability.component";
 
-describe('AvailabilityComponent', () => {
+describe("AvailabilityComponent", () => {
   let component: AvailabilityComponent;
   let fixture: ComponentFixture<AvailabilityComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AvailabilityComponent ]
-    })
-    .compileComponents();
+      declarations: [AvailabilityComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AvailabilityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,12 +1,12 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
+import { Component, ElementRef, ViewChild } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AuthService } from "src/app/auth.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
   loginForm!: FormGroup;
@@ -14,23 +14,23 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {
     this.loginForm = this.fb.group({
-      email: [''],
-      password: ['']
+      email: [""],
+      password: [""],
     });
   }
 
   onSubmit() {
     this.authService.login(this.loginForm.value).subscribe({
-      next: (res) => {
+      next: res => {
         // this.authService.saveToken(res.token);  // Assuming you get a token back
         // localStorage.setItem('role', res.role);
         this.authService.savelocalStorageItem(res);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(["/dashboard"]);
       },
-      error: (err) => console.error(err)
+      error: err => console.error(err),
     });
   }
 }

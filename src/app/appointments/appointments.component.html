@@ -6,7 +6,12 @@
     <div *ngFor="let provider of providers">
       <h4>{{ provider.name }}</h4>
       <p>Available Slots: {{ provider.availableSlots }}</p>
-      <button class="btn btn-primary" (click)="bookAppointment(provider.id, '2024-10-25T10:00')">Book 10 AM</button>
+      <button
+        class="btn btn-primary"
+        (click)="bookAppointment(provider.id, '2024-10-25T10:00')"
+      >
+        Book 10 AM
+      </button>
     </div>
   </div>
 
@@ -15,8 +20,18 @@
     <ul>
       <li *ngFor="let appointment of appointments">
         {{ appointment.clientName }} at {{ appointment.time }}
-        <button class="btn btn-success" (click)="updateStatus(appointment.id, 'ACCEPTED')">Accept</button>
-        <button class="btn btn-danger" (click)="cancelAppointment(appointment.id)">Cancel</button>
+        <button
+          class="btn btn-success"
+          (click)="updateStatus(appointment.id, 'ACCEPTED')"
+        >
+          Accept
+        </button>
+        <button
+          class="btn btn-danger"
+          (click)="cancelAppointment(appointment.id)"
+        >
+          Cancel
+        </button>
       </li>
     </ul>
   </div>
