@@ -1,0 +1,91 @@
+<!-- <div class="container">
+
+  <h2>Register</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" class="form-control" formControlName="name" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" class="form-control" formControlName="email" />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" class="form-control" formControlName="password" />
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select id="role" class="form-control" formControlName="role">
+        <option value="CLIENT">Client</option>
+        <option value="SERVICE_PROVIDER">Service Provider</option>
+      </select>
+    </div>
+
+    <br>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+
+  </form>
+
+</div> -->
+
+<div class="full-page-img">
+  <div class="container form-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="bg-light p-4 rounded shadow">
+
+      <h2 class="text-center">Create Your Account</h2>
+      <hr>
+
+      <div class="form-group mb-3">
+        <label for="name">Name</label>
+        <input id="name" class="form-control" formControlName="name" placeholder="Enter Your Name" required />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email"
+          aria-describedby="emailHelp" placeholder="Enter Your Email" required />
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" required
+          placeholder="Enter Password" />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="role">Role</label>
+        <select id="role" class="form-control form-select" formControlName="role" required>
+          <option value="" disabled selected>Select Your Role</option>
+          <option value="CLIENT">Client</option>
+          <option value="SERVICE_PROVIDER">Service Provider</option>
+        </select>
+      </div>
+
+      <!-- <div class="form-group form-check mb-3">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+      </div> -->
+
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+      <div class="d-flex justify-content-between mt-4">
+        <button class="btn btn-secondary" routerLink="/">Back to Home</button>
+        <button type="submit" class="btn btn-danger ms-2">Sign Up</button>
+      </div>
+
+      <div class="text-center mt-3">
+        <p>Already have an account? <a routerLink="/login">Login</a></p>
+      </div>
+
+
+    </form>
+  </div>
+</div>

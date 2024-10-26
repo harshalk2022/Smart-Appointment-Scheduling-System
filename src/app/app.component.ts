@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Smart_Appointment_Scheduling_System_Frontend';
+  title = 'Smart_Appointment_Scheduling_System';
 }

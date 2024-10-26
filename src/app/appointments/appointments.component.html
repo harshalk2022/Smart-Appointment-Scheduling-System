@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Appointments</h2>
+
+  <div *ngIf="isClient">
+    <h3>Available Service Providers</h3>
+    <div *ngFor="let provider of providers">
+      <h4>{{ provider.name }}</h4>
+      <p>Available Slots: {{ provider.availableSlots }}</p>
+      <button class="btn btn-primary" (click)="bookAppointment(provider.id, '2024-10-25T10:00')">Book 10 AM</button>
+    </div>
+  </div>
+
+  <div *ngIf="!isClient">
+    <h3>Your Appointments</h3>
+    <ul>
+      <li *ngFor="let appointment of appointments">
+        {{ appointment.clientName }} at {{ appointment.time }}
+        <button class="btn btn-success" (click)="updateStatus(appointment.id, 'ACCEPTED')">Accept</button>
+        <button class="btn btn-danger" (click)="cancelAppointment(appointment.id)">Cancel</button>
+      </li>
+    </ul>
+  </div>
+</div>
