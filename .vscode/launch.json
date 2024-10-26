@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SmartAppointmentSchedulingSystemApplication<Smart_Appointment_Scheduling_System>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.app.SmartAppointmentSchedulingSystemApplication",
+            "projectName": "Smart_Appointment_Scheduling_System",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

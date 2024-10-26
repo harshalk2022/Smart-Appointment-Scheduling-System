@@ -37,12 +37,4 @@ public class User {
 
     private String speciality; // Applicable only if role is DOCTOR
 
-    // Additional Enums
-    public enum Gender {
-        MALE, FEMALE
-    }
-
-    public enum Role {
-        PATIENT, DOCTOR
-    }
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { AuthService } from "src/app/auth.service";
 
 @Component({
@@ -8,19 +8,18 @@ import { AuthService } from "src/app/auth.service";
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   loginForm!: FormGroup;
   showWarning: string = ""; // Initialize as empty string
-
+  showPassword: boolean = false; // Initialize to false
   constructor(
-    private route: ActivatedRoute,
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
   ) {
     this.loginForm = this.fb.group({
-      email: ["", Validators.required],
-      password: ["", Validators.required],
+      email: [localStorage.getItem("email"), Validators.required],
+      password: [localStorage.getItem("password"), Validators.required],
     });
   }
 
@@ -31,21 +30,21 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(this.loginForm.value).subscribe({
-      next: res => {
-        this.authService.savelocalStorageItem(res);
+      next: (res) => {
+
+        this.authService.saveLocalStorageItem(res);
         this.router.navigate(["/dashboard"]);
       },
-      error: err => {
+      error: (err) => {
         this.showWarning = "Login failed. Please check your credentials."; // Another example message
         console.error(err);
       },
     });
   }
 
-  ngOnInit(): void {
-    this.loginForm.get("email")?.setValue(this.route.snapshot.params["email"]);
-    this.loginForm
-      .get("password")
-      ?.setValue(this.route.snapshot.params["password"]);
+  // Method to toggle password visibility
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
+
 }

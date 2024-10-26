@@ -31,11 +31,7 @@ export class AuthService {
     return !!localStorage.getItem("token");
   }
 
-  saveToken(token: string) {
-    localStorage.setItem("token", token);
-  }
-
-  savelocalStorageItem(data: Record<string, any>) {
+  saveLocalStorageItem(data: Record<string, any>) {
     Object.entries(data).forEach(([key, value]) => {
       localStorage.setItem(key, value);
     });

@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   showWarning: string = '';
+  showPassword: boolean = false; // Initialize to false
 
   constructor(
     private fb: FormBuilder,
@@ -45,7 +46,8 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(this.registerForm.value).subscribe({
       next: res => {
-        this.router.navigate(["/login"], res);
+        this.authService.saveLocalStorageItem(res);
+        this.router.navigate(["/login"]);
       },
       error: err => {
         console.error(err);
@@ -53,4 +55,9 @@ export class RegisterComponent implements OnInit {
       },
     });
   }
+  // Method to toggle password visibility
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
 }
