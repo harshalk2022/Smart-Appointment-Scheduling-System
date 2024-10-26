@@ -1,0 +1,164 @@
+<div class="full-page-img">
+  <div class="container form-container">
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="bg-light p-4 rounded shadow"
+    >
+      <h2 class="text-center">Create Your Account</h2>
+      <hr />
+
+      <!-- Name Input -->
+      <div class="form-group mb-3">
+        <label for="name">Name<small class="text-danger">*</small></label>
+        <input
+          id="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="Enter Your Name"
+          required
+        />
+        <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="text-danger">
+          Name is required.
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <div class="row">
+          <!-- Email Input -->
+          <div class="col-6">
+            <label for="exampleInputEmail1">Email address<small class="text-danger">*</small></label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              formControlName="email"
+              placeholder="Enter Your Email"
+              required
+            />
+            <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger">
+              Valid email is required.
+            </div>
+            <small id="emailHelp" class="form-text text-muted">
+              We'll never share your email with anyone else.
+            </small>
+          </div>
+
+          <!-- Password Input -->
+          <div class="col-6">
+            <label for="exampleInputPassword1">Password<small class="text-danger">*</small></label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              formControlName="password"
+              required
+              placeholder="Enter Password"
+            />
+            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger">
+              Password is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <div class="row">
+          <!-- Gender Selection -->
+          <div class="col-6">
+            <label>Gender</label>
+            <div class="d-flex align-items-center">
+              <div class="form-check mx-2">
+                <input type="radio" class="form-check-input" formControlName="gender" value="MALE" />
+                <label class="form-check-label">Male</label>
+              </div>
+              <div class="form-check mx-2">
+                <input type="radio" class="form-check-input" formControlName="gender" value="FEMALE" />
+                <label class="form-check-label">Female</label>
+              </div>
+            </div>
+          </div>
+          <!-- Role Selection -->
+          <div class="col-6">
+            <label>Role</label>
+            <div class="d-flex align-items-center">
+              <div class="form-check mx-2">
+                <input type="radio" class="form-check-input" formControlName="role" value="PATIENT" />
+                <label class="form-check-label">Patient</label>
+              </div>
+              <div class="form-check mx-2">
+                <input type="radio" class="form-check-input" formControlName="role" value="DOCTOR" />
+                <label class="form-check-label">Doctor</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <div class="row">
+          <!-- Date of Birth Input -->
+          <div class="col-6">
+            <label for="dob">Date of Birth<small class="text-danger">*</small></label>
+            <input
+              type="date"
+              class="form-control"
+              id="dob"
+              formControlName="dob"
+              required
+            />
+            <div *ngIf="registerForm.get('dob')?.invalid && registerForm.get('dob')?.touched" class="text-danger">
+              Date of birth is required.
+            </div>
+          </div>
+
+          <!-- Speciality Input (Visible if Role is Doctor) -->
+          <div class="col-6" *ngIf="registerForm.get('role')?.value === 'DOCTOR'">
+            <label for="speciality">Speciality</label>
+            <input
+              id="speciality"
+              class="form-control"
+              formControlName="speciality"
+              placeholder="Enter Speciality"
+            />
+            <div *ngIf="registerForm.get('speciality')?.invalid && registerForm.get('speciality')?.touched" class="text-danger">
+              Speciality is required for doctors.
+            </div>
+          </div>
+
+          <!-- Location Input -->
+          <div class="col-6">
+            <label for="location">Location<small class="text-danger">*</small></label>
+            <input
+              id="location"
+              class="form-control"
+              formControlName="location"
+              placeholder="Enter Your Location"
+              required
+            />
+            <div *ngIf="registerForm.get('location')?.invalid && registerForm.get('location')?.touched" class="text-danger">
+              Location is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Warning Alert for Form Validation -->
+      <div *ngIf="showWarning" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Warning!</strong> {{ showWarning }}
+        <button type="button" class="btn-close" (click)="showWarning = ''" aria-label="Close"></button>
+      </div>
+
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+      <div class="d-flex justify-content-between mt-4">
+        <button class="btn btn-secondary" routerLink="/">Back to Home</button>
+        <button type="submit" class="btn btn-danger ms-2">Sign Up</button>
+      </div>
+
+      <div class="text-center mt-3">
+        <p>Already have an account? <a routerLink="/login">Login</a></p>
+      </div>
+    </form>
+  </div>
+</div>
