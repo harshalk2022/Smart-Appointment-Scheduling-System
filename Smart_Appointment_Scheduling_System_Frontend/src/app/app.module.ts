@@ -12,6 +12,8 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { WelcomeComponent } from "./welcome/welcome.component";
+import { PatientComponent } from './dashboard/patient/patient.component';
+import { DoctorComponent } from './dashboard/doctor/doctor.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { WelcomeComponent } from "./welcome/welcome.component";
     AvailabilityComponent,
     NavbarComponent,
     WelcomeComponent,
+    PatientComponent,
+    DoctorComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,4 +38,4 @@ import { WelcomeComponent } from "./welcome/welcome.component";
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

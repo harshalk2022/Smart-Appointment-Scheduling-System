@@ -10,7 +10,7 @@ export class DashboardComponent implements OnInit {
   isPatient: boolean = false;
   isProvider: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     // Assuming token has role information, you can decode it

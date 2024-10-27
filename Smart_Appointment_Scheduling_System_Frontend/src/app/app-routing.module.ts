@@ -6,6 +6,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AppointmentsComponent } from "./appointments/appointments.component";
 import { AvailabilityComponent } from "./availability/availability.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
+import { PatientComponent } from "./dashboard/patient/patient.component";
+import { DoctorComponent } from "./dashboard/doctor/doctor.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/welcome", pathMatch: "full" },
@@ -15,10 +17,12 @@ const routes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "appointments", component: AppointmentsComponent },
   { path: "availability", component: AvailabilityComponent },
+  { path: "doctor", component: DoctorComponent },
+  { path: "patient", component: PatientComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
