@@ -1,60 +1,42 @@
 .full-page {
+  position: relative;
   height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  overflow: hidden;
+  justify-content: center;
 }
 
 .background-img {
-  background-image: url("src/img/banner.jpg");
+  background-image: url('src/img/banner.jpg');
   background-size: cover;
   background-position: center;
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
+  justify-content: center;
 }
 
-.content {
+.overlay {
   position: absolute;
-  text-align: center;
-  color: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  z-index: 1;
 }
 
-.greeting {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: black;
-}
-
-/* center */
-/* .buttons .btn {
-  font-size: 1.2rem;
-  padding: 0.5rem 2rem;
-} */
-
-/* Top-right corner buttons */
 .top-right-buttons {
   position: absolute;
   top: 20px;
   right: 20px;
+  z-index: 2; /* Above the overlay */
 }
 
-.top-right-buttons .btn {
-  font-size: 1.2rem;
-  padding: 0.5rem 1.5rem;
+.content {
+  z-index: 2; /* Above the overlay */
+  color: white; /* White text */
 }
 
-/* .glass-effect {
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 20px;
-  border-radius: 10px;
-  color: #000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-} */
