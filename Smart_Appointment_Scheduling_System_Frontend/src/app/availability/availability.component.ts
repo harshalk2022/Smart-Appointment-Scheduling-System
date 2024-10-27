@@ -34,16 +34,16 @@ export class AvailabilityComponent {
         console.error("Failed to set availability. Please try again.", err);
       }
     });
-}
+  }
 
-// Function to display success message
-showSuccessMessage(message: string) {
+  // Function to display success message
+  showSuccessMessage(message: string) {
     // You can use a simple variable to show the message or implement a more complex solution with alerts.
     this.successMessage = message; // Assuming you have a successMessage variable in your component
     setTimeout(() => {
       this.successMessage = ''; // Clear message after a few seconds
     }, 3000); // Adjust the duration as needed
-}
+  }
 
   // Utility function to keep date format consistent
   formatDate(dateStr: string): string {

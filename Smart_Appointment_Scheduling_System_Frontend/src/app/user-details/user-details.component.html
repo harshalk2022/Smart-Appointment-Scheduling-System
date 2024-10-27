@@ -1,0 +1,38 @@
+ <!-- Profile Section -->
+ <h2>Your Details</h2>
+
+ <div class="container my-4">
+   <div>
+     <label><b>Id:</b></label> {{ user.id }}
+   </div>
+
+   <div>
+     <label><b>Name:</b></label> {{ user.name }}
+   </div>
+
+   <div>
+     <label><b>Email:</b></label> {{ user.email }}
+   </div>
+
+   <div>
+     <label><b>Role:</b></label> {{ user.role }}
+   </div>
+
+   <div>
+     <label><b>Date of Birth:</b></label>
+     {{ user.dob | date: "yyyy-MM-dd" }}
+   </div>
+
+   <div>
+     <label><b>Gender:</b></label> {{ user.gender }}
+   </div>
+
+   <div>
+     <label><b>Location:</b></label> {{ user.location }}
+   </div>
+
+   <div>
+     <label><b>Speciality:</b></label> {{ user.speciality }}
+   </div>
+
+ </div>
