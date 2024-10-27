@@ -1,38 +1,78 @@
- <!-- Profile Section -->
- <h2>Your Details</h2>
+<div class="container mt-5">
+  <div class="card shadow-lg p-4 border-0 rounded-lg profile-card">
 
- <div class="container my-4">
-   <div>
-     <label><b>Id:</b></label> {{ user.id }}
-   </div>
+    <!-- Header Section -->
+    <div class="text-center mb-4">
+      <img src="https://via.placeholder.com/120" alt="Profile Picture" class="rounded-circle shadow-sm mb-3" style="width: 120px; height: 120px;">
+      <h2 class="mb-0">{{ user.name }}</h2>
+      <p class="text-muted">{{ user.role }}</p>
+      <hr class="w-50 mx-auto mb-4">
+    </div>
 
-   <div>
-     <label><b>Name:</b></label> {{ user.name }}
-   </div>
+    <!-- Profile Details Section -->
+    <div class="row text-center">
 
-   <div>
-     <label><b>Email:</b></label> {{ user.email }}
-   </div>
+      <!-- ID -->
+      <div class="col-md-4 col-6 mb-3">
+        <i class="fas fa-id-badge fa-lg text-primary mb-1"></i>
+        <p class="fw-bold">ID</p>
+        <p class="text-secondary">{{ user.id }}</p>
+      </div>
 
-   <div>
-     <label><b>Role:</b></label> {{ user.role }}
-   </div>
+      <!-- Email -->
+      <div class="col-md-4 col-6 mb-3">
+        <i class="fas fa-envelope fa-lg text-primary mb-1"></i>
+        <p class="fw-bold">Email</p>
+        <p class="text-secondary">{{ user.email }}</p>
+      </div>
 
-   <div>
-     <label><b>Date of Birth:</b></label>
-     {{ user.dob | date: "yyyy-MM-dd" }}
-   </div>
+      <!-- Date of Birth -->
+      <div class="col-md-4 col-6 mb-3">
+        <i class="fas fa-calendar-alt fa-lg text-primary mb-1"></i>
+        <p class="fw-bold">Date of Birth</p>
+        <p class="text-secondary">{{ user.dob | date: 'yyyy-MM-dd' }}</p>
+      </div>
 
-   <div>
-     <label><b>Gender:</b></label> {{ user.gender }}
-   </div>
+      <!-- Gender -->
+      <div class="col-md-4 col-6 mb-3">
+        <i class="fas fa-venus-mars fa-lg text-primary mb-1"></i>
+        <p class="fw-bold">Gender</p>
+        <p class="text-secondary">{{ user.gender }}</p>
+      </div>
 
-   <div>
-     <label><b>Location:</b></label> {{ user.location }}
-   </div>
+      <!-- Location -->
+      <div class="col-md-4 col-6 mb-3">
+        <i class="fas fa-map-marker-alt fa-lg text-primary mb-1"></i>
+        <p class="fw-bold">Location</p>
+        <p class="text-secondary">{{ user.location }}</p>
+      </div>
 
-   <div>
-     <label><b>Speciality:</b></label> {{ user.speciality }}
-   </div>
+      <!-- Specialty -->
+      <div class="col-md-4 col-6 mb-3">
+        <i class="fas fa-briefcase-medical fa-lg text-primary mb-1"></i>
+        <p class="fw-bold">Specialty</p>
+        <p class="text-secondary">{{ user.speciality }}</p>
+      </div>
+    </div>
 
- </div>
+    <!-- Action Buttons Section -->
+    <!-- <div class="text-center mt-4">
+      <button class="btn btn-success btn-lg me-3" (click)="onUpdate()">
+        <i class="fas fa-edit"></i> Update Profile
+      </button>
+      <button class="btn btn-danger btn-lg" (click)="onDelete()">
+        <i class="fas fa-trash-alt"></i> Delete Account
+      </button>
+    </div> -->
+
+  </div>
+</div>
+
+
+<!--
+in update profile user can update his details and
+if he want he can delete his account from here
+then shift this card in left
+
+and in right side add card and show role wise functinality
+-->

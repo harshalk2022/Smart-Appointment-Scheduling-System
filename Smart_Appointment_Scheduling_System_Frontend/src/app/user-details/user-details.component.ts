@@ -10,15 +10,14 @@ import { UserService } from '../user.service';
 })
 export class UserDetailsComponent implements OnInit {
   id!: number;
-  user!: User;
+  user: User = new User(); // Initialize with an empty User object
 
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    // Retrieve ID from route parameters or fallback to localStorage
     const routeId = this.route.snapshot.params['id'];
     this.id = routeId ? +routeId : Number(localStorage.getItem('id'));
 

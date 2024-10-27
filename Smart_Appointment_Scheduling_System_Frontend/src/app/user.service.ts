@@ -29,18 +29,18 @@ export class UserService {
   //   return this.httpClient.post(`${this.baseURl}`, user);
   // }
 
-  // getUserById(id: number): Observable<User> {
-  //   return this.httpClient.get<User>(`${this.baseURl}/${id}`);
-  // }
-
   getUserById(id: number): Observable<User> {
-    return this.httpClient.get<User>(`${this.baseURl}/${id}`).pipe(
-      catchError((error) => {
-        console.error("Failed to retrieve user:", error);
-        return throwError(error); // or any custom error handling
-      })
-    );
+    return this.httpClient.get<User>(`${this.baseURl}/${id}`);
   }
+
+  // getUserById(id: number): Observable<User> {
+  //   return this.httpClient.get<User>(`${this.baseURl}/${id}`).pipe(
+  //     catchError((error) => {
+  //       console.error("Failed to retrieve user:", error);
+  //       return throwError(error); // or any custom error handling
+  //     })
+  //   );
+  // }
 
 
   updateUser(id: number, user: User): Observable<Object> {
