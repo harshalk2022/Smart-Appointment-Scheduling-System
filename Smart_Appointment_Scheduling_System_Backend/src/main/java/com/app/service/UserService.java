@@ -1,7 +1,9 @@
 package com.app.service;
 
 import com.app.entity.User;
+import com.app.exeption.UserNotFoundException;
 import com.app.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +30,10 @@ public class UserService {
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
 	}
+
+	public User getUserById(long id) {
+		return userRepository.findById(id)
+				.orElseThrow(() -> new UserNotFoundException("Entered User Id dose not exits" + id));
+	}
+
 }

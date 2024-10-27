@@ -1,3 +1,4 @@
+import { DatePipe } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 
@@ -10,19 +11,25 @@ export class AvailabilityComponent {
   availableFrom: string = "";
   availableTo: string = "";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
+
 
   setAvailability() {
-    const providerId = 2; // Assuming logged in provider's ID
-    this.http
-      .post("http://localhost:8080/availability/set", {
-        providerId,
-        availableFrom: this.availableFrom,
-        availableTo: this.availableTo,
-      })
-      .subscribe({
-        next: () => alert("Availability set!"),
-        error: err => console.error(err),
-      });
+    const providerId = 2; // Mock provider ID, should eventually get from login
+    const availabilityData = {
+      providerId,
+      availableFrom: new Date(this.availableFrom).toISOString(),
+      availableTo: new Date(this.availableTo).toISOString(),
+    };
+
+    this.http.post("http://localhost:8080/availability/set", availabilityData).subscribe({
+      next: () => alert("Availability set!"),
+      error: err => console.error("Error setting availability:", err)
+    });
   }
+
+
 }
+
+

@@ -1,27 +1,40 @@
+<app-navbar></app-navbar> <br />
 <div class="container">
-  <h2>Set Availability</h2>
+    <h2>Set Availability</h2>
 
-  <form (ngSubmit)="setAvailability()">
-    <div class="form-group">
-      <label for="availableFrom">Available From</label>
-      <input
-        id="availableFrom"
-        class="form-control"
-        [(ngModel)]="availableFrom"
-        name="availableFrom"
-      />
-    </div>
+    <form (ngSubmit)="setAvailability()">
+        <div class="form-group">
+            <label for="availableFrom">Available From</label>
+            <input
+                id="availableFrom"
+                type="datetime-local"
+                class="form-control"
+                [(ngModel)]="availableFrom"
+                name="availableFrom"
+                required />
+        </div>
 
-    <div class="form-group">
-      <label for="availableTo">Available To</label>
-      <input
-        id="availableTo"
-        class="form-control"
-        [(ngModel)]="availableTo"
-        name="availableTo"
-      />
-    </div>
+        <div class="form-group">
+            <label for="availableTo">Available To</label>
+            <input
+                id="availableTo"
+                type="datetime-local"
+                class="form-control"
+                [(ngModel)]="availableTo"
+                name="availableTo"
+                required />
+        </div>
 
-    <button type="submit" class="btn btn-primary">Set Availability</button>
-  </form>
+        <div class="d-grid gap-2 d-md-block">
+            <button type="submit" class="btn btn-primary">
+                Set Availability
+            </button>
+            <button
+                type="submit"
+                class="btn btn-secondary"
+                routerLink="/dashboard">
+                Back To Home
+            </button>
+        </div>
+    </form>
 </div>
