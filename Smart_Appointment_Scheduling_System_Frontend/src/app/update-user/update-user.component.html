@@ -2,6 +2,14 @@
   <div class="card shadow p-4">
     <h3 class="text-center mb-4">Update Your Profile</h3>
 
+    <!-- Success and Error Messages -->
+    <div *ngIf="successMessage" class="alert alert-success text-center">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger text-center">
+      {{ errorMessage }}
+    </div>
+
     <form (ngSubmit)="onSubmit()">
       <div class="form-group mb-3">
         <label>Name</label>
@@ -38,8 +46,21 @@
 
       <div class="d-flex justify-content-between mt-4">
         <button type="submit" class="btn btn-success">Update Profile</button>
-        <button type="button" class="btn btn-danger" (click)="deleteUser()">Delete Account</button>
+        <button type="button" class="btn btn-danger" (click)="openDeletePopup()">Delete Account</button>
+        <button type="button" class="btn btn-secondary" routerLink="/dashboard">Back to Dashboard</button>
       </div>
     </form>
+  </div>
+
+  <!-- Delete Confirmation Popup -->
+  <div *ngIf="showDeletePopup" class="popup-overlay">
+    <div class="popup-content text-center">
+      <h4>Are you sure you want to delete your account?</h4>
+      <p>This action cannot be undone.</p>
+      <div class="mt-3">
+        <button class="btn btn-danger me-2" (click)="confirmDelete()">Yes, Delete</button>
+        <button class="btn btn-secondary" (click)="closeDeletePopup()">Cancel</button>
+      </div>
+    </div>
   </div>
 </div>

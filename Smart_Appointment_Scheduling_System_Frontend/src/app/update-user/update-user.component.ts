@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-update-user',
   templateUrl: './update-user.component.html',
   styleUrls: ['./update-user.component.css']
 })
-
 export class UpdateUserComponent implements OnInit {
   id!: number;
   user: User = new User();
+  successMessage = '';
+  errorMessage = '';
+  showDeletePopup = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,22 +31,33 @@ export class UpdateUserComponent implements OnInit {
   onSubmit(): void {
     this.userService.updateUser(this.id, this.user).subscribe({
       next: () => {
-        alert('User updated successfully!');
-        this.router.navigate(['/user-details', this.id]);
+        this.successMessage = 'Profile updated successfully!';
+        this.errorMessage = '';
       },
-      error: (err) => console.error('Error updating user:', err)
+      error: (err) => {
+        this.errorMessage = 'Error updating profile. Please try again.';
+        this.successMessage = '';
+      }
     });
   }
 
-  deleteUser(): void {
-    if (confirm('Are you sure you want to delete this account?')) {
-      this.userService.deleteUser(this.id).subscribe({
-        next: () => {
-          alert('Account deleted successfully.');
-          this.router.navigate(['/']); // Redirect to home or another route after deletion
-        },
-        error: (err) => console.error('Error deleting account:', err)
-      });
-    }
+  openDeletePopup(): void {
+    this.showDeletePopup = true;
+  }
+
+  closeDeletePopup(): void {
+    this.showDeletePopup = false;
+  }
+
+  confirmDelete(): void {
+    this.userService.deleteUser(this.id).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        this.errorMessage = 'Error deleting account. Please try again.';
+      }
+    });
+    this.closeDeletePopup();
   }
 }

@@ -4,7 +4,6 @@ import com.app.entity.User;
 import com.app.exeption.UserNotFoundException;
 import com.app.repository.UserRepository;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +36,6 @@ public class UserService {
 				.orElseThrow(() -> new UserNotFoundException("Entered User Id dose not exits" + id));
 	}
 
-
 	public User updateUserById(User user, long id) {
 		User newUser = userRepository.findById(id)
 				.orElseThrow(() -> new UserNotFoundException("Entered Todo Id dose not exits" + id));
@@ -56,4 +54,14 @@ public class UserService {
 		return newUser;
 	}
 
+	public void deleteUser(Long id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void deleteUserById(long id) {
+		userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("Entered Todo Id dose not exits" + id));
+		userRepository.deleteById(id);
+
+	}
 }
