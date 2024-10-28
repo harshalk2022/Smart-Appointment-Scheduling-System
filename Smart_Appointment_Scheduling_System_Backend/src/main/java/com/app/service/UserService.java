@@ -4,6 +4,7 @@ import com.app.entity.User;
 import com.app.exeption.UserNotFoundException;
 import com.app.repository.UserRepository;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,25 @@ public class UserService {
 	public User getUserById(long id) {
 		return userRepository.findById(id)
 				.orElseThrow(() -> new UserNotFoundException("Entered User Id dose not exits" + id));
+	}
+
+
+	public User updateUserById(User user, long id) {
+		User newUser = userRepository.findById(id)
+				.orElseThrow(() -> new UserNotFoundException("Entered Todo Id dose not exits" + id));
+
+		// Set new values
+		newUser.setName(user.getName());
+		newUser.setEmail(user.getEmail());
+		newUser.setRole(user.getRole());
+		newUser.setDob(user.getDob());
+		newUser.setGender(user.getGender());
+		newUser.setLocation(user.getLocation());
+		newUser.setSpeciality(user.getSpeciality());
+
+		// Saving updated User Details
+		userRepository.save(newUser);
+		return newUser;
 	}
 
 }
