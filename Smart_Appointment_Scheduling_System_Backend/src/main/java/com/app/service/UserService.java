@@ -54,11 +54,6 @@ public class UserService {
 		return newUser;
 	}
 
-	public void deleteUser(Long id) {
-		// TODO Auto-generated method stub
-
-	}
-
 	public void deleteUserById(long id) {
 		userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("Entered Todo Id dose not exits" + id));
 		userRepository.deleteById(id);
