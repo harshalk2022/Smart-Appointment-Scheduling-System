@@ -1,14 +1,31 @@
 <app-navbar></app-navbar>
-<div class="container">
-  <!-- <h2>Dashboard</h2> -->
+<div class="container mt-5">
+  <div class="row">
+    <!-- Left Column: User Details -->
+    <div class="col-md-5 mb-4">
+      <app-user-details></app-user-details>
+    </div>
 
-  <app-user-details></app-user-details>
+    <!-- Right Column: Patient or Provider Card -->
+    <div class="col-md-7">
+      <div class="card shadow-lg p-4 border-0 rounded-lg">
+        <div *ngIf="isPatient">
+          <!-- <h3 class="text-center">Patient Dashboard</h3>
+          <p class="text-center">You can book appointments here.</p>
+          <div class="d-flex justify-content-center">
+            <a class="btn btn-primary" routerLink="/appointments">Book Appointment</a>
+          </div> -->
+        </div>
 
-  <div *ngIf="isPatient">
-    <app-patient></app-patient>
-  </div>
-
-  <div *ngIf="isProvider">
-   <app-doctor></app-doctor>
+        <div *ngIf="isProvider">
+          <h3 class="text-center">Service Provider Dashboard</h3>
+          <p class="text-center">Manage your availability and appointments.</p>
+          <div class="d-flex justify-content-center">
+            <a class="btn btn-primary" routerLink="/availability">Set Availability</a>
+            <a class="btn btn-secondary ms-2" routerLink="/appointments">View Appointments</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
