@@ -12,34 +12,34 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { WelcomeComponent } from "./welcome/welcome.component";
-import { PatientComponent } from './dashboard/patient/patient.component';
-import { DoctorComponent } from './dashboard/doctor/doctor.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { UpdateUserComponent } from './update-user/update-user.component';
+import { PatientComponent } from "./dashboard/patient/patient.component";
+import { DoctorComponent } from "./dashboard/doctor/doctor.component";
+import { UserDetailsComponent } from "./user-details/user-details.component";
+import { UpdateUserComponent } from "./update-user/update-user.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    DashboardComponent,
-    AppointmentsComponent,
-    AvailabilityComponent,
-    NavbarComponent,
-    WelcomeComponent,
-    PatientComponent,
-    DoctorComponent,
-    UserDetailsComponent,
-    UpdateUserComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        RegisterComponent,
+        DashboardComponent,
+        AppointmentsComponent,
+        AvailabilityComponent,
+        NavbarComponent,
+        WelcomeComponent,
+        PatientComponent,
+        DoctorComponent,
+        UserDetailsComponent,
+        UpdateUserComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

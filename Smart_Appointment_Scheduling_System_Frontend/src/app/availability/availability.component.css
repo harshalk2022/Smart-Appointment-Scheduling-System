@@ -1,18 +1,18 @@
 /* availability.component.css */
 
 .container {
-  max-width: 600px;
+    max-width: 600px;
 }
 
 .card {
-  background-color: #f8f9fa;
-  border-radius: 8px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
 }
 
 h3 {
-  color: #333;
+    color: #333;
 }
 
 button {
-  font-weight: bold;
+    font-weight: bold;
 }

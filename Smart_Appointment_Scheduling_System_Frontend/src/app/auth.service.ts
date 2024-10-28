@@ -4,36 +4,36 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: "root",
+    providedIn: "root",
 })
 export class AuthService {
-  private baseUrl = "http://localhost:8080/users";
+    private baseUrl = "http://localhost:8080/users";
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-  ) {}
+    constructor(
+        private http: HttpClient,
+        private router: Router
+    ) {}
 
-  register(user: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/register`, user);
-  }
+    register(user: any): Observable<any> {
+        return this.http.post(`${this.baseUrl}/register`, user);
+    }
 
-  login(credentials: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, credentials);
-  }
+    login(credentials: any): Observable<any> {
+        return this.http.post(`${this.baseUrl}/login`, credentials);
+    }
 
-  logout() {
-    localStorage.removeItem("token");
-    this.router.navigate(["/login"]);
-  }
+    logout() {
+        localStorage.removeItem("token");
+        this.router.navigate(["/login"]);
+    }
 
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem("token");
-  }
+    isAuthenticated(): boolean {
+        return !!localStorage.getItem("token");
+    }
 
-  saveLocalStorageItem(data: Record<string, any>) {
-    Object.entries(data).forEach(([key, value]) => {
-      localStorage.setItem(key, value);
-    });
-  }
+    saveLocalStorageItem(data: Record<string, any>) {
+        Object.entries(data).forEach(([key, value]) => {
+            localStorage.setItem(key, value);
+        });
+    }
 }

@@ -11,23 +11,22 @@ import { DoctorComponent } from "./dashboard/doctor/doctor.component";
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { UpdateUserComponent } from "./update-user/update-user.component";
 
-
 const routes: Routes = [
-  { path: "", redirectTo: "/welcome", pathMatch: "full" },
-  { path: "welcome", component: WelcomeComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "login", component: LoginComponent },
-  { path: "dashboard", component: DashboardComponent },
-  { path: "appointments", component: AppointmentsComponent },
-  { path: "availability", component: AvailabilityComponent },
-  { path: "doctor", component: DoctorComponent },
-  { path: "patient", component: PatientComponent },
-  { path: "user-details", component: UserDetailsComponent },
-  { path: "update-user/:id", component: UpdateUserComponent }
+    { path: "", redirectTo: "/welcome", pathMatch: "full" },
+    { path: "welcome", component: WelcomeComponent },
+    { path: "register", component: RegisterComponent },
+    { path: "login", component: LoginComponent },
+    { path: "dashboard", component: DashboardComponent },
+    { path: "appointments", component: AppointmentsComponent },
+    { path: "availability", component: AvailabilityComponent },
+    { path: "doctor", component: DoctorComponent },
+    { path: "patient", component: PatientComponent },
+    { path: "user-details", component: UserDetailsComponent },
+    { path: "update-user/:id", component: UpdateUserComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

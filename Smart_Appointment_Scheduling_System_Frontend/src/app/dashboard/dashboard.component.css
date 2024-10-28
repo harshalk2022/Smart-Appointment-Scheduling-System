@@ -1,16 +1,42 @@
 /* Optional: Additional styling for layout spacing */
 .container {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .card {
-  border-radius: 10px;
+    border-radius: 10px;
+}
+
+h3 {
+    color: #007bff;
+}
+
+.btn {
+    min-width: 150px;
+}
+
+
+/* Dashboard Specific Styling */
+/* .patient-dashboard, .provider-dashboard {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h3 {
   color: #007bff;
+  font-weight: bold;
+}
+
+.action-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-3px);
 }
 
 .btn {
-  min-width: 150px;
-}
+  min-width: 160px;
+  font-size: 0.95rem;
+} */

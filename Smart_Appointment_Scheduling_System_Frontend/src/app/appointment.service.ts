@@ -2,26 +2,36 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: "root",
+    providedIn: "root",
 })
 export class AppointmentService {
-  private baseUrl = "http://localhost:8080";
+    private baseUrl = "http://localhost:8080";
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  bookAppointment(appointmentData: any) {
-    return this.http.post(`${this.baseUrl}/appointments/book`, appointmentData);
-  }
+    bookAppointment(appointmentData: any) {
+        return this.http.post(
+            `${this.baseUrl}/appointments/book`,
+            appointmentData
+        );
+    }
 
-  getPatientAppointments(patientId: number) {
-    return this.http.get(`${this.baseUrl}/appointments/patient/${patientId}`);
-  }
+    getPatientAppointments(patientId: number) {
+        return this.http.get(
+            `${this.baseUrl}/appointments/patient/${patientId}`
+        );
+    }
 
-  getProviderAppointments(providerId: number) {
-    return this.http.get(`${this.baseUrl}/appointments/provider/${providerId}`);
-  }
+    getProviderAppointments(providerId: number) {
+        return this.http.get(
+            `${this.baseUrl}/appointments/provider/${providerId}`
+        );
+    }
 
-  setAvailability(providerId: number, availabilityData: any) {
-    return this.http.post(`${this.baseUrl}/availability/set`, availabilityData);
-  }
+    setAvailability(providerId: number, availabilityData: any) {
+        return this.http.post(
+            `${this.baseUrl}/availability/set`,
+            availabilityData
+        );
+    }
 }

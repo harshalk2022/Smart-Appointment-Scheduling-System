@@ -1,39 +1,39 @@
 .profile-card {
-  background: linear-gradient(135deg, #f0f2f5, #ffffff);
-  border-radius: 15px;
-  max-width: 600px;
-  margin: auto;
+    background: linear-gradient(135deg, #f0f2f5, #ffffff);
+    border-radius: 15px;
+    max-width: 600px;
+    margin: auto;
 }
 
 .profile-card h2 {
-  color: #333;
-  font-weight: bold;
+    color: #333;
+    font-weight: bold;
 }
 
 .profile-card .fw-bold {
-  font-size: 0.9rem;
-  color: #007bff;
+    font-size: 0.9rem;
+    color: #007bff;
 }
 
 .profile-card .text-secondary {
-  font-size: 0.85rem;
-  color: #666;
+    font-size: 0.85rem;
+    color: #666;
 }
 
 .profile-card .text-center img {
-  border: 3px solid #007bff;
+    border: 3px solid #007bff;
 }
 
 .profile-card .btn {
-  border-radius: 20px;
-  padding: 0.5rem 1.5rem;
-  transition: 0.3s;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    transition: 0.3s;
 }
 
 .profile-card .btn-success:hover {
-  background-color: #28a745;
+    background-color: #28a745;
 }
 
 .profile-card .btn-danger:hover {
-  background-color: #dc3545;
+    background-color: #dc3545;
 }

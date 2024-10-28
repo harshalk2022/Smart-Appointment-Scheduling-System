@@ -1,31 +1,104 @@
 <app-navbar></app-navbar>
 <div class="container mt-5">
-  <div class="row">
-    <!-- Left Column: User Details -->
-    <div class="col-md-5 mb-4">
-      <app-user-details></app-user-details>
-    </div>
-
-    <!-- Right Column: Patient or Provider Card -->
-    <div class="col-md-7">
-      <div class="card shadow-lg p-4 border-0 rounded-lg">
-        <div *ngIf="isPatient">
-          <!-- <h3 class="text-center">Patient Dashboard</h3>
-          <p class="text-center">You can book appointments here.</p>
-          <div class="d-flex justify-content-center">
-            <a class="btn btn-primary" routerLink="/appointments">Book Appointment</a>
-          </div> -->
+    <div class="row">
+        <!-- Left Column: User Details -->
+        <div class="col-md-5 mb-4">
+            <app-user-details></app-user-details>
         </div>
 
-        <div *ngIf="isProvider">
-          <h3 class="text-center">Service Provider Dashboard</h3>
-          <p class="text-center">Manage your availability and appointments.</p>
-          <div class="d-flex justify-content-center">
-            <a class="btn btn-primary" routerLink="/availability">Set Availability</a>
-            <a class="btn btn-secondary ms-2" routerLink="/appointments">View Appointments</a>
-          </div>
+        <!-- Right Column: Patient or Provider Card -->
+        <div class="col-md-7">
+            <div class="card shadow-lg p-4 border-0 rounded-lg">
+                <!-- Patient Dashboard Section -->
+                <div *ngIf="isPatient" class="patient-dashboard">
+                    <h3 class="text-center text-primary">Patient Dashboard</h3>
+                    <p class="text-center">
+                        Explore services and book appointments easily.
+                    </p>
+
+                    <div class="action-card p-3 my-3 shadow-sm rounded">
+                        <h5 class="text-center text-dark mb-2">
+                            Your Appointments
+                        </h5>
+                        <p class="text-center">
+                            View and manage your upcoming appointments.
+                        </p>
+
+                        <!-- View Appointments Button -->
+                        <div class="text-center">
+                            <a
+                                class="btn btn-outline-secondary btn-lg w-75"
+                                routerLink="/appointments/view">
+                                <i class="fas fa-calendar-check me-2"></i> View
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="action-card p-3 my-3 shadow-sm rounded">
+                        <h5 class="text-center text-dark mb-2">
+                            Book New Appointment
+                        </h5>
+                        <p class="text-center">
+                            Select a service provider and schedule a new
+                            appointment.
+                        </p>
+
+                        <!-- Book Appointment Button -->
+                        <div class="text-center mb-3">
+                            <a
+                                class="btn btn-outline-primary btn-lg w-75"
+                                routerLink="/appointments">
+                                <i class="fas fa-calendar-plus me-2"></i> Book
+                                Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Provider Dashboard Section -->
+                <div *ngIf="isProvider" class="provider-dashboard">
+                    <h3 class="text-center text-success">
+                        Service Provider Dashboard
+                    </h3>
+                    <p class="text-center">
+                        Manage your availability and client appointments.
+                    </p>
+
+                    <div class="action-card p-3 my-3 shadow-sm rounded">
+                        <h5 class="text-center text-dark mb-2">
+                            Set Availability
+                        </h5>
+                        <p class="text-center">
+                            Define your available hours for appointments.
+                        </p>
+                        <div class="text-center">
+                            <a
+                                class="btn btn-outline-primary btn-lg w-75"
+                                routerLink="/availability">
+                                <i class="fas fa-clock me-2"></i> Set
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="action-card p-3 my-3 shadow-sm rounded">
+                        <h5 class="text-center text-dark mb-2">
+                            View Appointments
+                        </h5>
+                        <p class="text-center">
+                            Check your scheduled appointments and manage
+                            bookings.
+                        </p>
+
+                        <div class="text-center">
+                            <a
+                                class="btn btn-outline-secondary btn-lg w-75"
+                                routerLink="/appointments">
+                                <i class="fas fa-calendar-alt me-2"></i> View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
