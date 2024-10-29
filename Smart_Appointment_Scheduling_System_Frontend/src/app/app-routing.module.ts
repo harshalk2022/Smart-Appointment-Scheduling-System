@@ -6,10 +6,9 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AppointmentsComponent } from "./appointments/appointments.component";
 import { AvailabilityComponent } from "./availability/availability.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
-import { PatientComponent } from "./dashboard/patient/patient.component";
-import { DoctorComponent } from "./dashboard/doctor/doctor.component";
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { UpdateUserComponent } from "./update-user/update-user.component";
+import { UpdateAvailabilityComponent } from "./availability/update-availability/update-availability.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/welcome", pathMatch: "full" },
@@ -19,10 +18,9 @@ const routes: Routes = [
     { path: "dashboard", component: DashboardComponent },
     { path: "appointments", component: AppointmentsComponent },
     { path: "availability", component: AvailabilityComponent },
-    { path: "doctor", component: DoctorComponent },
-    { path: "patient", component: PatientComponent },
     { path: "user-details", component: UserDetailsComponent },
     { path: "update-user/:id", component: UpdateUserComponent },
+    { path: "availability/update/:id", component: UpdateAvailabilityComponent },
 ];
 
 @NgModule({

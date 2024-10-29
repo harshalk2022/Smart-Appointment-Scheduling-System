@@ -1,0 +1,114 @@
+<!-- <div class="container mt-5">
+  <div class="card shadow-lg p-4 border-0 rounded-lg">
+    <h3 class="text-center text-primary">Update Availability</h3>
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3">
+        <label for="availableFrom" class="form-label">Available From</label>
+        <input
+          type="datetime-local"
+          id="availableFrom"
+          formControlName="availableFrom"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="availableTo" class="form-label">Available To</label>
+        <input
+          type="datetime-local"
+          id="availableTo"
+          formControlName="availableTo"
+          class="form-control"
+        />
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary w-50" [disabled]="!updateForm.valid">
+          Update Availability
+        </button>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Update Availability</h2>
+
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+            <label for="availableFrom">Available From</label>
+            <input
+                type="datetime-local"
+                id="availableFrom"
+                class="form-control"
+                formControlName="availableFrom" />
+            <div
+                *ngIf="
+                    updateForm.get('availableFrom')?.invalid &&
+                    updateForm.get('availableFrom')?.touched
+                "
+                class="text-danger">
+                Please provide a start date and time.
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="availableTo">Available To</label>
+            <input
+                type="datetime-local"
+                id="availableTo"
+                class="form-control"
+                formControlName="availableTo" />
+            <div
+                *ngIf="
+                    updateForm.get('availableTo')?.invalid &&
+                    updateForm.get('availableTo')?.touched
+                "
+                class="text-danger">
+                Please provide an end date and time.
+            </div>
+        </div>
+
+        <div *ngIf="successMessage" class="alert alert-success">
+            {{ successMessage }}
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+            {{ errorMessage }}
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="updateForm.invalid">
+                Update
+            </button>
+            <button
+                type="button"
+                class="btn btn-danger"
+                (click)="confirmDelete()">
+                Delete
+            </button>
+        </div>
+    </form>
+
+    <!-- Delete Confirmation Popup -->
+    <div *ngIf="showDeletePopup" class="popup-overlay">
+        <div class="popup-card">
+            <h5 class="text-center">Confirm Deletion</h5>
+            <p class="text-center">
+                Are you sure you want to delete this availability?
+            </p>
+            <div class="d-flex justify-content-around mt-4">
+                <button
+                    class="btn btn-secondary"
+                    (click)="showDeletePopup = false">
+                    Cancel
+                </button>
+                <button class="btn btn-danger" (click)="deleteAvailability()">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

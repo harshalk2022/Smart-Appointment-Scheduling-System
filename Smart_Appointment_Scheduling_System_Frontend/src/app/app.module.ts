@@ -12,10 +12,9 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { WelcomeComponent } from "./welcome/welcome.component";
-import { PatientComponent } from "./dashboard/patient/patient.component";
-import { DoctorComponent } from "./dashboard/doctor/doctor.component";
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { UpdateUserComponent } from "./update-user/update-user.component";
+import { UpdateAvailabilityComponent } from "./availability/update-availability/update-availability.component";
 
 @NgModule({
     declarations: [
@@ -27,10 +26,9 @@ import { UpdateUserComponent } from "./update-user/update-user.component";
         AvailabilityComponent,
         NavbarComponent,
         WelcomeComponent,
-        PatientComponent,
-        DoctorComponent,
         UserDetailsComponent,
         UpdateUserComponent,
+        UpdateAvailabilityComponent,
     ],
     imports: [
         BrowserModule,
