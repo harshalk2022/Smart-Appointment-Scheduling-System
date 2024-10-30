@@ -1,62 +1,65 @@
 <app-navbar></app-navbar>
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Update Availability</h2>
+    <div class="card shadow p-4">
+        <h3 class="text-center mb-4">Update Availability</h3>
 
-    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
-        <div class="form-group mb-3">
-            <label for="availableFrom">Available From</label>
-            <input
-                type="datetime-local"
-                id="availableFrom"
-                class="form-control"
-                formControlName="availableFrom" />
-            <div
-                *ngIf="
-                    updateForm.get('availableFrom')?.invalid &&
-                    updateForm.get('availableFrom')?.touched
-                "
-                class="text-danger">
-                Please provide a start date and time.
-            </div>
-        </div>
-
-        <div class="form-group mb-3">
-            <label for="availableTo">Available To</label>
-            <input
-                type="datetime-local"
-                id="availableTo"
-                class="form-control"
-                formControlName="availableTo" />
-            <div
-                *ngIf="
-                    updateForm.get('availableTo')?.invalid &&
-                    updateForm.get('availableTo')?.touched
-                "
-                class="text-danger">
-                Please provide an end date and time.
-            </div>
-        </div>
-
-        <div *ngIf="successMessage" class="alert alert-success">
+        <!-- Success Message Display -->
+        <div *ngIf="successMessage" class="alert alert-success" role="alert">
             {{ successMessage }}
         </div>
-        <div *ngIf="errorMessage" class="alert alert-danger">
+        <!-- Error Message Display -->
+        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
             {{ errorMessage }}
         </div>
 
-        <div class="d-flex justify-content-between mt-4">
-            <button
-                type="submit"
-                class="btn btn-primary"
-                [disabled]="updateForm.invalid">
-                Update
-            </button>
-            <button
-                type="button"
-                class="btn btn-secondary"
-                routerLink="/dashboard">
-                Back to Dashboard
-            </button>
-        </div>
-    </form>
+        <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+                <label for="availableFrom">Available From</label>
+                <input
+                    type="datetime-local"
+                    id="availableFrom"
+                    class="form-control"
+                    formControlName="availableFrom"
+                    required />
+                <div
+                    *ngIf="
+                        updateForm.get('availableFrom')?.invalid &&
+                        updateForm.get('availableFrom')?.touched
+                    "
+                    class="text-danger">
+                    Please provide a start date and time.
+                </div>
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="availableTo">Available To</label>
+                <input
+                    type="datetime-local"
+                    id="availableTo"
+                    class="form-control"
+                    formControlName="availableTo"
+                    required />
+                <div
+                    *ngIf="
+                        updateForm.get('availableTo')?.invalid &&
+                        updateForm.get('availableTo')?.touched
+                    "
+                    class="text-danger">
+                    Please provide an end date and time.
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-primary me-2" [disabled]="updateForm.invalid">
+                    Update
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    routerLink="/dashboard">
+                    Back to Dashboard
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
