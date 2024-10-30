@@ -43,7 +43,7 @@ public class AvailabilityController {
 	}
 
 	// Updating Availability details by id using put mapping
-	@PutMapping("/provider/{providerId}")
+	@PutMapping("/provider/{id}")
 	public ResponseEntity<Availability> updateAvailability(@PathVariable("id") long id,
 			@RequestBody Availability Availability) {
 		return new ResponseEntity<Availability>(availabilityService.updateAvailabilityById(Availability, id),
@@ -51,7 +51,7 @@ public class AvailabilityController {
 	}
 
 	// Deleting Availability details by id using Delete Mapping
-	@DeleteMapping("/provider/{providerId}")
+	@DeleteMapping("/provider/{id}")
 	public ResponseEntity<String> deleteAvailability(@PathVariable Long id) {
 		availabilityService.deleteAvailabilityById(id);
 		return new ResponseEntity<String>("Deleted Successfully", HttpStatus.OK);

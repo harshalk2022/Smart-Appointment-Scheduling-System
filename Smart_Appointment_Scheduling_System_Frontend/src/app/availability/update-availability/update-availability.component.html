@@ -1,36 +1,4 @@
-<!-- <div class="container mt-5">
-  <div class="card shadow-lg p-4 border-0 rounded-lg">
-    <h3 class="text-center text-primary">Update Availability</h3>
-    <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
-      <div class="form-group mb-3">
-        <label for="availableFrom" class="form-label">Available From</label>
-        <input
-          type="datetime-local"
-          id="availableFrom"
-          formControlName="availableFrom"
-          class="form-control"
-        />
-      </div>
-
-      <div class="form-group mb-3">
-        <label for="availableTo" class="form-label">Available To</label>
-        <input
-          type="datetime-local"
-          id="availableTo"
-          formControlName="availableTo"
-          class="form-control"
-        />
-      </div>
-
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary w-50" [disabled]="!updateForm.valid">
-          Update Availability
-        </button>
-      </div>
-    </form>
-  </div>
-</div> -->
-
+<app-navbar></app-navbar>
 <div class="container mt-5">
     <h2 class="text-center mb-4">Update Availability</h2>
 
@@ -85,30 +53,10 @@
             </button>
             <button
                 type="button"
-                class="btn btn-danger"
-                (click)="confirmDelete()">
-                Delete
+                class="btn btn-secondary"
+                routerLink="/dashboard">
+                Back to Dashboard
             </button>
         </div>
     </form>
-
-    <!-- Delete Confirmation Popup -->
-    <div *ngIf="showDeletePopup" class="popup-overlay">
-        <div class="popup-card">
-            <h5 class="text-center">Confirm Deletion</h5>
-            <p class="text-center">
-                Are you sure you want to delete this availability?
-            </p>
-            <div class="d-flex justify-content-around mt-4">
-                <button
-                    class="btn btn-secondary"
-                    (click)="showDeletePopup = false">
-                    Cancel
-                </button>
-                <button class="btn btn-danger" (click)="deleteAvailability()">
-                    Delete
-                </button>
-            </div>
-        </div>
-    </div>
 </div>
