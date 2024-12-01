@@ -27,7 +27,7 @@ public class AvailabilityController {
 	@Autowired
 	private AvailabilityService availabilityService;
 
-	@PostMapping("/set")
+	@PostMapping("/provider")
 	public ResponseEntity<Availability> setAvailability(@RequestBody AvailabilityRequest availabilityRequest) {
 		LocalDateTime availableFrom = LocalDateTime.parse(availabilityRequest.getAvailableFrom());
 		LocalDateTime availableTo = LocalDateTime.parse(availabilityRequest.getAvailableTo());
@@ -36,10 +36,24 @@ public class AvailabilityController {
 		return ResponseEntity.ok(availability);
 	}
 
+//	@GetMapping("/provider/{providerId}")
+//	public ResponseEntity<List<Availability>> getProviderAvailability(@PathVariable Long providerId) {
+//		List<Availability> availabilities = availabilityService.getProviderAvailability(providerId);
+//		return ResponseEntity.ok(availabilities);
+//	}
+
 	@GetMapping("/provider/{providerId}")
-	public ResponseEntity<List<Availability>> getProviderAvailability(@PathVariable Long providerId) {
-		List<Availability> availabilities = availabilityService.getProviderAvailability(providerId);
-		return ResponseEntity.ok(availabilities);
+	public ResponseEntity<?> getProviderAvailability(@PathVariable Long providerId) {
+		try {
+			List<Availability> availabilities = availabilityService.getProviderAvailability(providerId);
+			return ResponseEntity.ok(availabilities);
+		} catch (RuntimeException e) {
+			// Log and return a 404 or 500 status if provider not found or another issue
+			// occurs
+			System.err.println("Error fetching availability for providerId " + providerId + ": " + e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body("Error fetching availability details: " + e.getMessage());
+		}
 	}
 
 	// Updating Availability details by id using put mapping

@@ -38,6 +38,24 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  // onSubmit(): void {
+  //   if (this.registerForm.invalid) {
+  //     this.showWarning = "Please fill out all required fields correctly.";
+  //     return;
+  //   }
+
+  //   this.authService.register(this.registerForm.value).subscribe({
+  //     next: res => {
+  //       this.authService.saveLocalStorageItem(res);
+  //       this.router.navigate(["/login"]);
+  //     },
+  //     error: err => {
+  //       console.error(err);
+  //       this.showWarning = "Registration failed. Please try again.";
+  //     },
+  //   });
+  // }
+
   onSubmit(): void {
     if (this.registerForm.invalid) {
       this.showWarning = "Please fill out all required fields correctly.";
@@ -47,6 +65,12 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.registerForm.value).subscribe({
       next: res => {
         this.authService.saveLocalStorageItem(res);
+
+        // Save providerId to localStorage during registration
+        if (res.providerId) {
+          localStorage.setItem("providerId", res.providerId.toString());
+        }
+
         this.router.navigate(["/login"]);
       },
       error: err => {
@@ -55,6 +79,7 @@ export class RegisterComponent implements OnInit {
       },
     });
   }
+
 
   // Method to toggle password visibility
   togglePasswordVisibility() {

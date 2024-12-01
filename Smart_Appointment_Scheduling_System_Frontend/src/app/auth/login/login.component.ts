@@ -23,24 +23,49 @@ export class LoginComponent {
         });
     }
 
-    onSubmit() {
-        if (this.loginForm.invalid) {
-            this.showWarning = "Please fill out all required fields."; // Show alert with a custom message
-            return;
-        }
+    // onSubmit() {
+    //     if (this.loginForm.invalid) {
+    //         this.showWarning = "Please fill out all required fields."; // Show alert with a custom message
+    //         return;
+    //     }
 
-        this.authService.login(this.loginForm.value).subscribe({
-            next: res => {
-                this.authService.saveLocalStorageItem(res);
-                this.router.navigate(["/dashboard"]);
-            },
-            error: err => {
-                this.showWarning =
-                    "Login failed. Please check your credentials."; // Another example message
-                console.error(err);
-            },
-        });
+    //     this.authService.login(this.loginForm.value).subscribe({
+    //         next: res => {
+    //             this.authService.saveLocalStorageItem(res);
+    //             this.router.navigate(["/dashboard"]);
+    //         },
+    //         error: err => {
+    //             this.showWarning =
+    //                 "Login failed. Please check your credentials."; // Another example message
+    //             console.error(err);
+    //         },
+    //     });
+    // }
+
+    onSubmit() {
+      if (this.loginForm.invalid) {
+        this.showWarning = "Please fill out all required fields.";
+        return;
+      }
+
+      this.authService.login(this.loginForm.value).subscribe({
+        next: res => {
+          this.authService.saveLocalStorageItem(res);
+
+          // Save providerId to localStorage during login
+          if (res.providerId) {
+            localStorage.setItem("providerId", res.providerId.toString());
+          }
+
+          this.router.navigate(["/dashboard"]);
+        },
+        error: err => {
+          this.showWarning = "Login failed. Please check your credentials.";
+          console.error(err);
+        },
+      });
     }
+
 
     // Method to toggle password visibility
     togglePasswordVisibility() {

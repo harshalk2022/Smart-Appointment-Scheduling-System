@@ -33,23 +33,59 @@ public class AvailabilityService {
 		return availabilityRepository.save(availability);
 	}
 
+//	public List<Availability> getProviderAvailability(Long providerId) {
+//		User provider = userRepository.findById(providerId).orElseThrow();
+//		return availabilityRepository.findByServiceProvider(provider);
+//	}
+
 	public List<Availability> getProviderAvailability(Long providerId) {
-		User provider = userRepository.findById(providerId).orElseThrow();
-		return availabilityRepository.findByServiceProvider(provider);
+		// Log the providerId to verify if it's correctly passed
+		System.out.println("Fetching availability for providerId: " + providerId);
+
+		// Check if the provider exists
+		User provider = userRepository.findById(providerId)
+				.orElseThrow(() -> new RuntimeException("Provider with ID " + providerId + " not found"));
+
+		// Fetch the availability details associated with the provider
+		List<Availability> availabilities = availabilityRepository.findByServiceProvider(provider);
+
+		// Log if no availabilities were found
+		if (availabilities.isEmpty()) {
+			System.out.println("No availabilities found for providerId: " + providerId);
+		}
+
+		return availabilities;
 	}
+
+//	public Availability updateAvailabilityById(Availability availability, long id) {
+//		Availability newAvailability = availabilityRepository.findById(id)
+//				.orElseThrow(() -> new AvailablityNotFoundException("Entered Availability Id dose not exits " + id));
+//
+//		// Set new values
+//		newAvailability.setAvailableFrom(availability.getAvailableFrom());
+//		newAvailability.setAvailableTo(availability.getAvailableTo());
+//
+//		// Saving updated Availability Details
+//		availabilityRepository.save(newAvailability);
+//		return newAvailability;
+//
+//	}
 
 	public Availability updateAvailabilityById(Availability availability, long id) {
 		Availability newAvailability = availabilityRepository.findById(id)
-				.orElseThrow(() -> new AvailablityNotFoundException("Entered Availability Id dose not exits " + id));
+				.orElseThrow(() -> new AvailablityNotFoundException("Entered Availability Id does not exist " + id));
+
+		// Ensure provider is set in case of update
+		if (availability.getServiceProvider() != null) {
+			newAvailability.setServiceProvider(availability.getServiceProvider());
+		}
 
 		// Set new values
 		newAvailability.setAvailableFrom(availability.getAvailableFrom());
 		newAvailability.setAvailableTo(availability.getAvailableTo());
 
-		// Saving updated Availability Details
-		availabilityRepository.save(newAvailability);
-		return newAvailability;
-
+		// Save updated Availability Details
+		return availabilityRepository.save(newAvailability);
 	}
 
 	public void deleteAvailabilityById(long id) {

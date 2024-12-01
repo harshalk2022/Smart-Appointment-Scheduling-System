@@ -8,7 +8,7 @@ import { AvailabilityComponent } from "./availability/availability.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
 import { UserDetailsComponent } from "./user-details/user-details.component";
 import { UpdateUserComponent } from "./update-user/update-user.component";
-import { UpdateAvailabilityComponent } from "./availability/update-availability/update-availability.component";
+import { UpdateAvailabilityComponent } from "./update-availability/update-availability.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/welcome", pathMatch: "full" },
